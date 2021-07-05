@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import uz.pdp.appspringcaching.entity.Student;
 import uz.pdp.appspringcaching.repository.StudentRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -63,4 +64,26 @@ public class StudentService {
         studentRepository.deleteById(id);
         return "Student deleted!";
     }
+
+
+//    @CacheEvict(cacheNames = "student", key = "#id")
+//    public String editStudent(Integer id, Student student) {
+//        Optional<Student> optionalStudent = studentRepository.findById(id);
+//        if(optionalStudent.isEmpty())
+//            return null;
+//        Student editingStudent = optionalStudent.get();
+//        editingStudent.setName(student.getName());
+//        editingStudent.setAge(student.getAge());
+//        studentRepository.save(editingStudent);
+//        return "Student edited";
+//    }
+//
+//
+//    @Cacheable(cacheNames = "student", key = "#name", condition = "#name.startsWith(\"N\")")
+//    public Student getStudentByName(String name) {
+//        Optional<Student> optionalStudent = studentRepository.findByName(name);
+//        if(optionalStudent.isEmpty())
+//            return null;
+//        return optionalStudent.get();
+//    }
 }
